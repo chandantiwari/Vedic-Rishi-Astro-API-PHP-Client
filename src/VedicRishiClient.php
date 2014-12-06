@@ -90,8 +90,13 @@ class VedicRishiClient
         return array_merge($mData, $fData);
     }
 
+    private function dataSanityCheck($data)
+    {
+
+    }
+
     /**
-     * @param $resourceName apiName name of an api without any begining and end slashes (ex 'birth_details')
+     * @param $resourceName string apiName name of an api without any begining and end slashes (ex 'birth_details')
      * @param $date date
      * @param $month month
      * @param $year year
@@ -107,7 +112,7 @@ class VedicRishiClient
 
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
         $resData = $this->getCurlReponse($resourceName, $data);
-        return $resData;
+        return json_decode($resData);
     }
 
     /**
@@ -118,8 +123,13 @@ class VedicRishiClient
      */
     public function matchMakingCall($resourceName, array $maleBirthData, array $femaleBirthData)
     {
+        //TODO:  needs to validate male and female birth data against expected keys
+        //$this->dataSanityCheck($maleBirthData);
+        //$this->dataSanityCheck($femaleBirthData);
 
-        return array();
+        $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
+        $response = $this->getCurlReponse($resourceName, $data);
+        return json_decode($response);
     }
 
 }
