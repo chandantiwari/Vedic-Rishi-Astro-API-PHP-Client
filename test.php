@@ -9,8 +9,8 @@
 require_once 'src/VedicRishiClient.php';
 
 
-$userId = "<Your User Id here>";
-$apiKey = "<Your Api Key Here>";
+$userId = "<YourUserIdhere>";
+$apiKey = "<YourApiKeyHere>";
 
 // make some dummy data in order to call vedic rishi api
 $data = array(
@@ -36,3 +36,25 @@ $responseData = $vedicRishi->call($resourceName, $data['date'], $data['month'], 
 
 // print response data
 print_r($responseData);
+
+// match making api to be called
+$matchMakingReourceName = "match_ashtakoot_points";
+
+// create female data and will treat above $data as male data to be sent to matchmaking api
+$femaleData = array(
+
+    'date' => 9,
+    'month' => 12,
+    'year' => 1990,
+    'hour' => 12,
+    'minute' => 56,
+    'latitude' => 25.123,
+    'longitude' => 82.34,
+    'timezone' => 5.5
+);
+
+// call matchMakingCall method of vedicrishiclient for matching apis
+$ashtakootaPoints = $vedicRishi->matchMakingCall($matchMakingReourceName, $data, $femaleData);
+
+// print ashtakoota response data recieved from api
+print_r($ashtakootaPoints);
