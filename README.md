@@ -17,14 +17,14 @@ How to Use
     ```php
     $clientInstance = new VedicRishiClient($userId, $apiKey);
     ```
-    Replace $userId and $apiKey with your id and keys respectively.
+    Replace ```php $userId ``` and ```php $apiKey``` with your id and keys respectively.
 3. Call the api
     ```php
     $response = $clientInstance->call($apiName, $date, $month, $year, $hour, $min, $lat, $lon, $tzone);
     ```
     View test.php for more details about calling APIs.
     
-4. The $response will be a JSON encoded data returned as an API response. Eg. for /planets/ api - 
+4. The ```php $response ``` will be a JSON encoded data returned as an API response. Eg. for ```php /planets/ ``` api - 
     ```js
     [
         {
