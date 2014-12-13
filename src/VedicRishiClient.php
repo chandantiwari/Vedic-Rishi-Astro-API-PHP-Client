@@ -67,14 +67,14 @@ class VedicRishiClient
     private function packageMatchMakingData($maleBirthData, $femaleBirthData)
     {
         $mData = array(
-            'day' => $maleBirthData['date'],
-            'month' => $maleBirthData['month'],
-            'year' => $maleBirthData['year'],
-            'hour' => $maleBirthData['hour'],
-            'min' => $maleBirthData['minute'],
-            'lat' => $maleBirthData['latitude'],
-            'lon' => $maleBirthData['longitude'],
-            'tzone' => $maleBirthData['timezone']
+            'm_day' => $maleBirthData['date'],
+            'm_month' => $maleBirthData['month'],
+            'm_year' => $maleBirthData['year'],
+            'm_hour' => $maleBirthData['hour'],
+            'm_min' => $maleBirthData['minute'],
+            'm_lat' => $maleBirthData['latitude'],
+            'm_lon' => $maleBirthData['longitude'],
+            'm_tzone' => $maleBirthData['timezone']
         );
         $fData = array(
             'f_day' => $femaleBirthData['date'],
