@@ -14,11 +14,31 @@ How to Use
 
 1. Copy VedicRishiClient.php class file to your local or server system
 2. Instantiate as follows -
-
+    ```php
     $clientInstance = new VedicRishiClient($userId, $apiKey);
-
+    ```
     Replace $userId and $apiKey with your id and keys respectively.
 3. Call the api
-    $response = $clientInstance->call(<apiName>, <date>, <month>...);
-
-4. The $response will be a JSON encoded data returned as an API response.
+    ```php
+    $response = $clientInstance->call($apiName, $date, $month, $year, $hour, $min, $lat, $lon, $tzone);
+    ```
+    View test.php for more details about calling APIs.
+    
+4. The $response will be a JSON encoded data returned as an API response. Eg. for /planets/ api - 
+    ```js
+    [
+        {
+            "id":0,
+            "name":"SUN",
+            "fullDegree":95.83230788313479,
+            "normDegree":5.8323078831347885,"speed":0.9547191489638442,
+            "isRetro":"false",
+            "sign":"CANCER",
+            "signLord":"MOON",
+            "nakshatra":"PUSHYA",
+            "nakshatraLord":7,
+            "house":11
+        }
+        ...
+    ]
+    ```
