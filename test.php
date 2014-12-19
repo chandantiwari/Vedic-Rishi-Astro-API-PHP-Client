@@ -35,7 +35,7 @@ $vedicRishi = new VedicRishiClient($userId, $apiKey);
 $responseData = $vedicRishi->call($resourceName, $data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 // print response data
-print_r($responseData);
+echo $responseData;
 
 // match making api to be called
 $matchMakingReourceName = "match_ashtakoot_points";
@@ -57,4 +57,4 @@ $femaleData = array(
 $ashtakootaPoints = $vedicRishi->matchMakingCall($matchMakingReourceName, $data, $femaleData);
 
 // print ashtakoota response data recieved from api
-print_r($ashtakootaPoints);
+//echo $ashtakootaPoints;

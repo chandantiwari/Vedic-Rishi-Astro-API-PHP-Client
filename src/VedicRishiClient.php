@@ -11,7 +11,7 @@ class VedicRishiClient
 {
     private $userId = null;
     private $apiKey = null;
-    private $apiEndPoint = "http://api.vedicrishiastro.com";
+    private $apiEndPoint = "http://api.vedicrishiastro.com/v1";
 
     /**
      * @param $uid userId for Vedic Rishi Astro API
@@ -32,19 +32,17 @@ class VedicRishiClient
         curl_setopt($ch,CURLOPT_URL, $serviceUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        $headers = array(
-            'Content-Type:application/json',
-            'Authorization: Basic '. base64_encode($authData)
-        );
-
         curl_setopt($ch, CURLOPT_TIMEOUT, 20);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 
-        curl_setopt($ch, CURLOPT_HEADER, $headers);
+        $header[] = 'Authorization: Basic '. base64_encode($authData);
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 
         $response = curl_exec($ch);
+
         curl_close($ch);
 
         return $response;
@@ -112,7 +110,7 @@ class VedicRishiClient
 
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
         $resData = $this->getCurlReponse($resourceName, $data);
-        return json_decode($resData);
+        return $resData;
     }
 
     /**
@@ -129,7 +127,7 @@ class VedicRishiClient
 
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
         $response = $this->getCurlReponse($resourceName, $data);
-        return json_decode($response);
+        return $response;
     }
 
 }
