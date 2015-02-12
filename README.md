@@ -46,9 +46,11 @@ How to Use
     ]
     ```
 5. For calling numerological api, call method name ``` numeroCall() ``` as follows -
+
     ```php
         $response = $clientInstance->numeroCall($apiName, $date, $month, $year, $name);
-        ```
+
+    ```
     Only date, month and year along with name is required for numerological calculations.
 
 6. For match making horoscope calculations and report analysis, please use ```matchMakingCall()``` method as follows -
@@ -57,8 +59,8 @@ How to Use
             $response = $clientInstance->matchMakingCall($resourceName, array $maleBirthData, array $femaleBirthData);
 
 
-    where ``` $maleBirthData``` and ```$femaleBirthData``` is mapped as follows -
-            ```php
+    //where  $maleBirthData and $femaleBirthData is mapped as follows -
+
                     $femaleData = array(
 
                         'date' => 9,
@@ -82,6 +84,6 @@ How to Use
                         'longitude' => 82.34,
                         'timezone' => 5.5
                     );
-
+                ```
 
 For API documentation, visit - https://www.vedicrishiastro.com/astro-api/docs/
