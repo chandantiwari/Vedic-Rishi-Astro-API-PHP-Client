@@ -56,7 +56,7 @@ How to Use
     ```php
             $response = $clientInstance->matchMakingCall($resourceName, array $maleBirthData, array $femaleBirthData);
 
-            ```
+
     where ``` $maleBirthData``` and ```$femaleBirthData``` is mapped as follows -
             ```php
                     $femaleData = array(
@@ -82,6 +82,6 @@ How to Use
                         'longitude' => 82.34,
                         'timezone' => 5.5
                     );
-            ```
+
 
 For API documentation, visit - https://www.vedicrishiastro.com/astro-api/docs/
