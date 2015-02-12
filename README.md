@@ -84,6 +84,6 @@ How to Use
                         'longitude' => 82.34,
                         'timezone' => 5.5
                     );
-
+    ```
 
 For API documentation, visit - https://www.vedicrishiastro.com/astro-api/docs/
