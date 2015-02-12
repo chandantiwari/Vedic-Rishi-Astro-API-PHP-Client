@@ -11,6 +11,11 @@ class VedicRishiClient
 {
     private $userId = null;
     private $apiKey = null;
+
+    //TODO: MUST enable this on production- MUST
+    //private $apiEndPoint = "https://api.vedicrishiastro.com/v1";
+
+    //TODO: MUST- comment this and uncomment https url above on production for added security
     private $apiEndPoint = "http://api.vedicrishiastro.com/v1";
 
     /**
@@ -58,7 +63,18 @@ class VedicRishiClient
             'min' => $minute,
             'lat' => $latitude,
             'lon' => $longitude,
-            'tzone' => $timezone
+            'tzone' => $timezone,
+            'name' => 'chandan'
+        );
+    }
+
+    private function packageNumeroData($date, $month, $year, $name)
+    {
+        return array(
+            'day' => $date,
+            'month' => $month,
+            'year' => $year,
+            'name' => $name
         );
     }
 
@@ -111,10 +127,27 @@ class VedicRishiClient
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
         $resData = $this->getCurlReponse($resourceName, $data);
         return $resData;
+
     }
 
     /**
-     * @param $resourceName apiName name of an api along with begining and end slashes (ex /birth_details)
+     * @param $resourceName string apiName name of numerological api (numero_table and numero_report)
+     * @param $date date
+     * @param $month month
+     * @param $year year
+     * @param $name name
+     * @return array response data decoded in PHP associative array format
+     */
+
+    public function numeroCall($resourceName, $date, $month, $year, $name)
+    {
+        $data = $this->packageNumeroData($date, $month, $year, $name);
+        $resData = $this->getCurlReponse($resourceName, $data);
+        return $resData;
+    }
+
+    /**
+     * @param $resourceName apiName name of an api along without any begining and end slashes (ex match_birth_details)
      * @param array $maleBirthData  maleBirthdata associative array format
      * @param array $femaleBirthData femaleBirthdata associative array format
      * @return array response data decoded in PHP associative array format
