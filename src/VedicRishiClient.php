@@ -19,8 +19,8 @@ class VedicRishiClient
     private $apiEndPoint = "http://api.vedicrishiastro.com/v1";
 
     /**
-     * @param $uid userId for Vedic Rishi Astro API
-     * @param $key api key for Vedic Rishi Astro API access
+     * @param $uid string userId for Vedic Rishi Astro API
+     * @param $key string api key for Vedic Rishi Astro API access
      */
     public function __construct($uid, $key)
     {
@@ -132,10 +132,10 @@ class VedicRishiClient
 
     /**
      * @param $resourceName string apiName name of numerological api (numero_table and numero_report)
-     * @param $date date
-     * @param $month month
-     * @param $year year
-     * @param $name name
+     * @param $date int date of birth
+     * @param $month int month of birth
+     * @param $year int year of birth
+     * @param $name string name
      * @return array response data decoded in PHP associative array format
      */
 
@@ -148,8 +148,8 @@ class VedicRishiClient
 
     /**
      * @param $resourceName apiName name of an api along without any begining and end slashes (ex match_birth_details)
-     * @param array $maleBirthData  maleBirthdata associative array format
-     * @param array $femaleBirthData femaleBirthdata associative array format
+     * @param array $maleBirthData  array maleBirthdata associative array format
+     * @param array $femaleBirthData array femaleBirthdata associative array format
      * @return array response data decoded in PHP associative array format
      */
     public function matchMakingCall($resourceName, array $maleBirthData, array $femaleBirthData)
