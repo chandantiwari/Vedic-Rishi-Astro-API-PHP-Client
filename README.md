@@ -52,6 +52,7 @@ How to Use
 
     ```
     Only date, month and year along with name is required for numerological calculations.
+    Run the numerolgy.php file to test numerological APIs.
 
 6. For match making horoscope calculations and report analysis, please use ```matchMakingCall()``` method as follows -
 
@@ -85,5 +86,5 @@ How to Use
                         'timezone' => 5.5
                     );
     ```
-
+Run matching.php file to run Vedic Rishi Match Making APIs.
 For API documentation, visit - https://www.vedicrishiastro.com/astro-api/docs/
