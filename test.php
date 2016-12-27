@@ -22,7 +22,8 @@ $data = array(
     'minute' => 0,
     'latitude' => 25.123,
     'longitude' => 82.34,
-    'timezone' => 5.5
+    'timezone' => 5.5,
+    'prediction_timezone' => 5.5 // Optional. Only For Transit Prediction API
 );
 
 // api name which is to be called
@@ -36,3 +37,8 @@ $responseData = $vedicRishi->call($resourceName, $data['date'], $data['month'], 
 
 // print response data
 echo $responseData;
+
+
+// call Transit prediction api's
+//$transitResponseData = $vedicRishi->callTransitPrediction($resourceName, $data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone'],$data['prediction_timezone']);
+//echo $transitResponseData;

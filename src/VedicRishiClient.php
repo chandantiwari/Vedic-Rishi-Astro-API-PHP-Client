@@ -68,6 +68,21 @@ class VedicRishiClient
         );
     }
 
+    private function packageTransitPredictionData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone, $predictionTimezone)
+    {
+        return array(
+            'day' => $date,
+            'month' => $month,
+            'year' => $year,
+            'hour' => $hour,
+            'min' => $minute,
+            'lat' => $latitude,
+            'lon' => $longitude,
+            'tzone' => $timezone,
+            'prediction_timezone' => $predictionTimezone
+        );
+    }
+
     private function packageNumeroData($date, $month, $year, $name)
     {
         return array(
@@ -161,6 +176,14 @@ class VedicRishiClient
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
         $response = $this->getCurlReponse($resourceName, $data);
         return $response;
+    }
+
+    /*Prediction with timezone*/
+    public function callTransitPrediction($resourceName, $date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone,$predictionTimezone)
+    {
+        $data = $this->packageTransitPredictionData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone,$predictionTimezone);
+        $resData = $this->getCurlReponse($resourceName, $data);
+        return $resData;
     }
 
 }
