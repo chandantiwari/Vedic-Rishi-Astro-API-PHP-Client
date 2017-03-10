@@ -11,6 +11,7 @@ class VedicRishiClient
 {
     private $userId = null;
     private $apiKey = null;
+	private $language = null;
 
     //TODO: MUST enable this on production- MUST
     //private $apiEndPoint = "https://api.vedicrishiastro.com/v1";
@@ -27,6 +28,16 @@ class VedicRishiClient
         $this->userId = $uid;
         $this->apiKey = $key;
     }
+	
+	/*
+        A Function to set the Language of Response.
+        Just call this function and you can change the language.
+        This function should be passed either 'en' for English or 'hi' for Hindi.
+    */
+    public function setLanguage( $language )
+    {
+        $this->language = $language;
+    }
 
     private function getCurlReponse($resource, array $data)
     {
@@ -41,6 +52,11 @@ class VedicRishiClient
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 
         $header[] = 'Authorization: Basic '. base64_encode($authData);
+		
+        /* Setting the Language of Response */
+		if( $this->language != NULL ) {
+			array_push( $header , 'Accept-Language: ' . $this->language );
+		}
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -123,6 +139,17 @@ class VedicRishiClient
      */
     public function call($resourceName, $date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
     {
+		/*
+		echo $resourceName .'<br>';
+		echo $date .'<br>';
+		echo $month .'<br>';
+		echo $year .'<br>';
+		echo $hour .'<br>';
+		echo $minute .'<br>';
+		echo $latitude .'<br>';
+		echo $longitude .'<br>';
+		echo $timezone .'<br>';
+		*/
 
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
         $resData = $this->getCurlReponse($resourceName, $data);
